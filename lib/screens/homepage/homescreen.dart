@@ -7,8 +7,11 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../appstyle.dart';
 import '../../models/properties.dart';
 import '../../size_config.dart';
+import '../details/detailspage.dart';
 
 class HomeScreen extends StatefulWidget {
+  static String route() => '/home';
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -285,17 +288,25 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(
-                                  width: 250,
-                                  height: 200,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    borderRadius: BorderRadius.circular(20.0),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        listing.imageUrl,
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushReplacement(context,
+                                        MaterialPageRoute(builder: (context)=>
+                                            PropertyDetailsPage(realEstateListings: listing,)));
+
+                                  },
+                                  child: Container(
+                                    width: 250,
+                                    height: 200,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                          listing.imageUrl,
+                                        ),
+                                        fit: BoxFit.cover,
                                       ),
-                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),

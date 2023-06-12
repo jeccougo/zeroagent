@@ -27,7 +27,7 @@ List<RealEstateListing> realEstateListings = [
   RealEstateListing(
     id: '1',
     title: 'Beautiful Villa',
-    description: 'Spacious villa with stunning views',
+    description: 'Spacious villa with stunning views. This luxurious villa features high-end finishes and a modern design. The villa offers 4 bedrooms, 3 bathrooms, and a total area of 200 square meters. Located in the heart of City X, this property is surrounded by amenities and offers convenient access to shopping centers, restaurants, and parks.',
     imageUrl: 'assets/images/bg2.jpg',
     price: 250000.0,
     bedrooms: 4,
@@ -35,6 +35,7 @@ List<RealEstateListing> realEstateListings = [
     area: 200.0,
     location: 'City X',
   ),
+
   RealEstateListing(
     id: '2',
     title: 'Cozy Apartment',

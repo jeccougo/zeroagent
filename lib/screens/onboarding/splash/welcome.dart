@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../homepage/homescreen.dart';
 import '../signup/signupscreen.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -165,7 +164,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue.shade900,
+                    backgroundColor: Colors.blue.shade900,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
                           10.0), // Set the border radius of the button

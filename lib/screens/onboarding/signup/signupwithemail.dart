@@ -132,7 +132,7 @@ class _SignupEScreenState extends State<SignupEScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.blue.shade900,
+                      backgroundColor: Colors.blue.shade900,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
                             10.0), // Set the border radius of the button
@@ -166,7 +166,7 @@ class _SignupEScreenState extends State<SignupEScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
+                      backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
                             10.0),
@@ -196,7 +196,7 @@ class _SignupEScreenState extends State<SignupEScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
+                      backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
                             10.0),

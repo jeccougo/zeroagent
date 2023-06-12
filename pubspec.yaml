@@ -40,7 +40,7 @@ dependencies:
   intl_phone_field: ^3.1.0
   readmore:
   google_nav_bar:
-
+  get:
 
 
 dev_dependencies:
