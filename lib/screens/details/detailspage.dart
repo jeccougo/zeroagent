@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
 import 'package:zeroagent/size_config.dart';
@@ -103,7 +105,13 @@ class _PropertyDetailsPageState extends State<PropertyDetailsPage> {
                       ),
                       padding: EdgeInsets.symmetric(horizontal: 24),
                       child: Center(
-                        child: Text('Chat Now'),
+                        child: Text('Chat Now',
+                          style: GoogleFonts.lato(
+                            textStyle: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),),
                       ),
                     ),
                   ],
@@ -121,8 +129,9 @@ class _PropertyDetailsPageState extends State<PropertyDetailsPage> {
             Icons.arrow_back,
             color: Colors.black,
           ),
-          onPressed: () => Navigator.pop(context),
-        ),
+          onPressed: () {
+            Get.back();
+          }),
         title: Text(
           widget.realEstateListings!.title,
           style: GoogleFonts.lato(

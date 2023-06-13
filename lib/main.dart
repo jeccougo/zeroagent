@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
       home: MainPage(),
       getPages: [
         GetPage(name: '/', page: () => HomeScreen()),
+        GetPage(name: '/main', page: () => MainPage()),
         GetPage(name: '/details', page: () =>  PropertyDetailsPage(realEstateListings: null, )),
       ],
     );

@@ -10,6 +10,7 @@ import '../screens/saved/saved properties.dart';
 
 
 class MainPage extends StatefulWidget {
+  static String route() => '/main';
 
   MainPage({Key? key,}) : super(key: key);
 

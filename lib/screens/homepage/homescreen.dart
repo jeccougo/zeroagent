@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../appstyle.dart';
@@ -24,15 +26,17 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         toolbarHeight: 65,
         backgroundColor: Colors.white70,
-        title: Text('ZeroAgent', style: GoogleFonts.lato(
-          textStyle: TextStyle(
-            fontSize: SizeConfig.blockSizeHorizontal!*5,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
+        title: Text(
+          'ZeroAgent',
+          style: GoogleFonts.lato(
+            textStyle: TextStyle(
+              fontSize: SizeConfig.blockSizeHorizontal! * 5,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),),
+        ),
         actions: [
-
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: CircleAvatar(
@@ -79,7 +83,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-
                       Positioned(
                         top: 120,
                         left: 0,
@@ -91,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 50,
                               width: 150,
                               decoration: BoxDecoration(
-                                color:  Colors.white,
+                                color: Colors.white,
                                 borderRadius: BorderRadius.circular(10.0),
                                 boxShadow: [
                                   BoxShadow(
@@ -103,7 +106,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               child: Center(
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Icon(
                                       Icons.list,
@@ -129,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 50,
                               width: 150,
                               decoration: BoxDecoration(
-                                color:  Colors.white,
+                                color: Colors.white,
                                 borderRadius: BorderRadius.circular(10.0),
                                 boxShadow: [
                                   BoxShadow(
@@ -141,7 +145,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               child: Center(
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Icon(
                                       Icons.search,
@@ -168,7 +173,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
-
                   Positioned(
                     bottom: 0.0,
                     child: Container(
@@ -263,7 +267,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                         ),
-
                         Text(
                           'See more',
                           style: GoogleFonts.lato(
@@ -290,10 +293,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.pushReplacement(context,
-                                        MaterialPageRoute(builder: (context)=>
-                                            PropertyDetailsPage(realEstateListings: listing,)));
-
+                                    Get.to(
+                                        () => PropertyDetailsPage(
+                                              realEstateListings: listing,
+                                            ),
+                                        duration: Duration(milliseconds: 500),
+                                        transition: Transition.downToUp);
                                   },
                                   child: Container(
                                     width: 250,
@@ -344,8 +349,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-
-
               Container(
                 padding: EdgeInsets.fromLTRB(20, 5, 20, 20),
                 child: Column(
@@ -364,7 +367,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                         ),
-
                         Text(
                           'See more',
                           style: GoogleFonts.lato(
