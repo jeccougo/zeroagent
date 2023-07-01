@@ -5,11 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:readmore/readmore.dart';
 
 import '../../appstyle.dart';
 import '../../models/properties.dart';
+import '../../models/properties.dart';
+import '../../models/properties.dart';
 import '../../size_config.dart';
 import '../details/detailspage.dart';
+import '../landlord/landlord_onboarding/login.dart';
 
 class HomeScreen extends StatefulWidget {
   static String route() => '/home';
@@ -90,42 +94,50 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Container(
-                              height: 50,
-                              width: 150,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.2),
-                                    blurRadius: 4,
-                                    offset: Offset(0, 7),
-                                  ),
-                                ],
-                              ),
-                              child: Center(
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Icon(
-                                      Icons.list,
-                                      size: 20,
-                                      color: Colors.black,
-                                    ),
-                                    Text(
-                                      'List property',
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.lato(
-                                        textStyle: TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.normal,
-                                        ),
-                                      ),
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(
+                                        () => LandlordLoginScreen(),
+                                    duration: Duration(milliseconds: 500),
+                                    transition: Transition.downToUp);
+                              },
+                              child: Container(
+                                height: 50,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.2),
+                                      blurRadius: 4,
+                                      offset: Offset(0, 7),
                                     ),
                                   ],
+                                ),
+                                child: Center(
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Icon(
+                                        Icons.list,
+                                        size: 20,
+                                        color: Colors.black,
+                                      ),
+                                      Text(
+                                        'List property',
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.lato(
+                                          textStyle: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -317,6 +329,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
 
                                 SizedBox(height: 8.0),
+
                                 Text(
                                   listing.price.toString(),
                                   style: GoogleFonts.lato(
@@ -327,16 +340,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
                                 ),
-                                Text(
-                                  listing.description,
-                                  style: GoogleFonts.lato(
-                                    textStyle: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                ),
+
+                                // Text(
+                                //   listing.description,
+                                //   style: GoogleFonts.lato(
+                                //     textStyle: TextStyle(
+                                //       fontSize: 12,
+                                //       color: Colors.black,
+                                //       fontWeight: FontWeight.normal,
+                                //     ),
+                                //   ),
+                                // ),
                                 Text(listing.location),
                                 // Add any other desired widgets for each listing
                               ],
@@ -417,16 +431,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
                                 ),
-                                Text(
-                                  listing.description,
-                                  style: GoogleFonts.lato(
-                                    textStyle: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
-                                ),
+                                // Text(
+                                //   listing.description,
+                                //   style: GoogleFonts.lato(
+                                //     textStyle: TextStyle(
+                                //       fontSize: 12,
+                                //       color: Colors.black,
+                                //       fontWeight: FontWeight.normal,
+                                //     ),
+                                //   ),
+                                // ),
                                 Text(listing.location),
                                 // Add any other desired widgets for each listing
                               ],
