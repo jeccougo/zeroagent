@@ -8,14 +8,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'identity4.dart';
 
-class VerificationPage extends StatefulWidget {
-  const VerificationPage({Key? key}) : super(key: key);
+class Identity3 extends StatefulWidget {
+  const Identity3({Key? key}) : super(key: key);
 
   @override
-  _VerificationPageState createState() => _VerificationPageState();
+  _Identity3State createState() => _Identity3State();
 }
 
-class _VerificationPageState extends State<VerificationPage> {
+class _Identity3State extends State<Identity3> {
   bool isChecked1 = false;
   bool isChecked2 = false;
   bool isChecked3 = false;
@@ -24,6 +24,7 @@ class _VerificationPageState extends State<VerificationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue.shade900,
         title: Text('Identity Verification 3 of 4'),
       ),
       body: SingleChildScrollView(
@@ -36,11 +37,11 @@ class _VerificationPageState extends State<VerificationPage> {
               SizedBox(height: 20,),
               Text(
                 'Upload a proof of your Identity',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
               ),
               Text(
                 'We need to verify your identity. This helps tokeep everyone safe',
-                style: TextStyle(fontSize: 13, fontWeight: FontWeight.normal),
+                style: TextStyle(fontSize: 13, fontWeight: FontWeight.w300),
               ),
 
               SizedBox(height: 35,),
@@ -60,10 +61,17 @@ class _VerificationPageState extends State<VerificationPage> {
                               textStyle: TextStyle(
                                 fontSize: 18.0,
                                 color: Colors.black,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.normal,
                               ),
                             ),),
-                          Text('National Identity Number'),
+                          Text('National Identity Number',
+                            style: GoogleFonts.lato(
+                            textStyle: TextStyle(
+                              fontSize: 15.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),),
                         ],
                       ),
                     ],
@@ -95,10 +103,17 @@ class _VerificationPageState extends State<VerificationPage> {
                               textStyle: TextStyle(
                                 fontSize: 18.0,
                                 color: Colors.black,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.normal,
                               ),
                             ),),
-                          Text('National Identity Number'),
+                          Text('National Identity Number',
+                            style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                fontSize: 15.0,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),),
                         ],
                       ),
                     ],
@@ -131,10 +146,17 @@ class _VerificationPageState extends State<VerificationPage> {
                               textStyle: TextStyle(
                                 fontSize: 18.0,
                                 color: Colors.black,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.normal,
                               ),
                             ),),
-                          Text('National Identity Number'),
+                          Text('National Identity Number',
+                            style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                fontSize: 15.0,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),),
                         ],
                       ),
                     ],

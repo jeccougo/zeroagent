@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import 'landlordprofile.dart';
+import 'identity2.dart';
 
-class LandlordLoginScreen extends StatelessWidget {
+class Identity1 extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -23,7 +23,7 @@ class LandlordLoginScreen extends StatelessWidget {
     // Navigate to the next screen after login
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => landlordProfile()),
+      MaterialPageRoute(builder: (context) => Identity2()),
     );
   }
 
@@ -44,7 +44,7 @@ class LandlordLoginScreen extends StatelessWidget {
         // Navigate to the next screen after login
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => landlordProfile()),
+          MaterialPageRoute(builder: (context) => Identity2()),
         );
       }
     } catch (error) {
@@ -60,10 +60,11 @@ class LandlordLoginScreen extends StatelessWidget {
         leading:  Icon(
           Icons.arrow_back,
           size: 20,
-          color: Colors.black,
+          color: Colors.white,
         ),
+        title: Text('Identity Verification 1 of 4'),
         elevation: 0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.blue.shade900,
       ),
       body: SingleChildScrollView(
 
@@ -77,13 +78,13 @@ class LandlordLoginScreen extends StatelessWidget {
                 child: Text('Are you a',
                   style: GoogleFonts.lato(
                     textStyle: TextStyle(
-                      fontSize: 14.0,
+                      fontSize: 16.0,
                       color: Colors.black,
                       fontWeight: FontWeight.normal,
                     ),
                   ),),
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 5,),
               Text('Landlord?',
                 style: GoogleFonts.lato(
                   textStyle: TextStyle(
@@ -93,7 +94,7 @@ class LandlordLoginScreen extends StatelessWidget {
                   ),
                 ),),
               Padding(
-                padding: const EdgeInsets.only(left: 15,right: 15,bottom: 5,top: 150),
+                padding: const EdgeInsets.only(left: 15,right: 15,bottom: 5,top: 100),
                 child: TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(

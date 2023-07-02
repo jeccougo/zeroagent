@@ -13,7 +13,7 @@ import '../../models/properties.dart';
 import '../../models/properties.dart';
 import '../../size_config.dart';
 import '../details/detailspage.dart';
-import '../landlord/landlord_onboarding/login.dart';
+import '../landlord/landlord_onboarding/identity1.dart';
 
 class HomeScreen extends StatefulWidget {
   static String route() => '/home';
@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             GestureDetector(
                               onTap: () {
                                 Get.to(
-                                        () => LandlordLoginScreen(),
+                                        () => Identity1(),
                                     duration: Duration(milliseconds: 500),
                                     transition: Transition.downToUp);
                               },
