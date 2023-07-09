@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:provider/provider.dart';
 import 'package:zeroagent/screens/details/detailspage.dart';
 import 'package:zeroagent/screens/homepage/homescreen.dart';
 import 'package:zeroagent/screens/onboarding/splash/splash_screen.dart';
 import 'package:zeroagent/screens/onboarding/splash/welcome.dart';
 
 import 'components/buttomnavbar.dart';
+import 'components/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => PropertyListProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

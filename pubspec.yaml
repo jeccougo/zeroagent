@@ -43,6 +43,7 @@ dependencies:
   get:
   google_sign_in: ^6.1.4
   image_picker: ^0.8.9
+  provider:
 
 
 dev_dependencies:
