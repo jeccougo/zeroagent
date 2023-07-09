@@ -14,4 +14,12 @@ class PropertyListProvider extends ChangeNotifier {
     properties.remove(property);
     notifyListeners();
   }
+
+  void updateProperty(Property updatedProperty) {
+    final index = properties.indexWhere((property) => property.id == updatedProperty.id);
+    if (index != -1) {
+      properties[index] = updatedProperty;
+      notifyListeners();
+    }
+  }
 }
