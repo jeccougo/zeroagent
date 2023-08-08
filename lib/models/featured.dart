@@ -23,6 +23,8 @@ class RealEstateListing {
 }
 
 
+
+
 List<RealEstateListing> realEstateListings = [
   RealEstateListing(
     id: '1',

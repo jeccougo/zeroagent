@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:zeroagent/screens/details/detailspage.dart';
 import 'package:zeroagent/screens/homepage/homescreen.dart';
 
+import 'models/featured.dart';
+
 final Map<String, WidgetBuilder> routes = {
-  HomeScreen.route(): (context) => HomeScreen(),
+  HomeScreen.route(): (context) => HomeScreen(realEstateListings: realEstateListings,),
   // MostPopularScreen.route(): (context) => const MostPopularScreen(title: '',),
   // SpecialOfferScreen.route(): (context) => const SpecialOfferScreen(),
   // ProfileScreen.route(): (context) =>  ProfileScreen(),

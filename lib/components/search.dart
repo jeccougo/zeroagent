@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/properties.dart';
+import '../models/featured.dart';
 import '../screens/details/detailspage.dart';
 
 class SearchBar extends SearchDelegate<String> {

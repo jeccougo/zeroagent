@@ -22,4 +22,25 @@ class PropertyListProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
 }
+
+class SavedPropertiesProvider with ChangeNotifier {
+  List<String> savedProperties = [];
+
+  // Method to toggle the saved status of a property
+  void toggleSavedProperty(String propertyId) {
+    if (savedProperties.contains(propertyId)) {
+      savedProperties.remove(propertyId);
+    } else {
+      savedProperties.add(propertyId);
+    }
+    notifyListeners();
+  }
+
+  // Method to check if a property is saved or not
+  bool isPropertySaved(String propertyId) {
+    return savedProperties.contains(propertyId);
+  }
+}
+

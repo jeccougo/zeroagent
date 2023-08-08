@@ -5,19 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:readmore/readmore.dart';
+import 'package:provider/provider.dart';
+import 'package:zeroagent/models/featured.dart';
+import '../../components/provider.dart';
 
-import '../../appstyle.dart';
-import '../../models/properties.dart';
-import '../../models/properties.dart';
-import '../../models/properties.dart';
 import '../../size_config.dart';
 import '../details/detailspage.dart';
 import '../landlord/landlord_onboarding/identity1.dart';
 
 class HomeScreen extends StatefulWidget {
-  static String route() => '/home';
+  final List<RealEstateListing> realEstateListings;
+  const HomeScreen({Key? key, required this.realEstateListings})
+      : super(key: key);
 
+  static String route() => '/home';
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -25,6 +26,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+
+    final savedPropertiesProvider = Provider.of<SavedPropertiesProvider>(context);
+    final RealEstateListing firstListing = widget.realEstateListings[0];
+    final isPropertySaved = savedPropertiesProvider.savedProperties.contains(firstListing.id);
+
+
+
+
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
@@ -32,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.white70,
         title: Text(
           'ZeroAgent',
-          style: GoogleFonts.lato(
+          style: GoogleFonts.poppins(
             textStyle: TextStyle(
               fontSize: SizeConfig.blockSizeHorizontal! * 5,
               color: Colors.black,
@@ -128,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Text(
                                         'List property',
                                         textAlign: TextAlign.center,
-                                        style: GoogleFonts.lato(
+                                        style: GoogleFonts.poppins(
                                           textStyle: TextStyle(
                                             fontSize: 14,
                                             color: Colors.black,
@@ -168,7 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Text(
                                       'Search property',
                                       textAlign: TextAlign.center,
-                                      style: GoogleFonts.lato(
+                                      style: GoogleFonts.poppins(
                                         textStyle: TextStyle(
                                           fontSize: 14,
                                           color: Colors.black,
@@ -208,7 +217,7 @@ class _HomeScreenState extends State<HomeScreen> {
               //     children: [
               //       Expanded(child:
               //       TextField(
-              //         style: GoogleFonts.lato(
+              //         style: GoogleFonts.poppins(
               //           textStyle: TextStyle(
               //             fontSize: SizeConfig.blockSizeHorizontal!*3,
               //             color: Colors.black,
@@ -245,7 +254,7 @@ class _HomeScreenState extends State<HomeScreen> {
               //           disabledBorder: AImputBorder,
               //           focusedBorder: AImputBorder,
               //           enabledBorder: AImputBorder,
-              //           hintStyle: GoogleFonts.lato(
+              //           hintStyle: GoogleFonts.poppins(
               //             textStyle: TextStyle(
               //               fontSize: SizeConfig.blockSizeHorizontal!*5,
               //               color: Colors.black12,
@@ -271,7 +280,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         Text(
                           'Featured',
-                          style: GoogleFonts.lato(
+                          style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               fontSize: 20,
                               color: Colors.black,
@@ -281,7 +290,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Text(
                           'See more',
-                          style: GoogleFonts.lato(
+                          style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               fontSize: 12,
                               color: Colors.black,
@@ -292,12 +301,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     SizedBox(
-                      height: 272,
+                      height: 252,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: realEstateListings.length,
                         itemBuilder: (context, index) {
                           final listing = realEstateListings[index];
+                          final isPropertySaved = savedPropertiesProvider.isPropertySaved(listing.id);
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
@@ -324,26 +334,125 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                         fit: BoxFit.cover,
                                       ),
+
+                                    ),
+                                    child: Stack(
+                                      children: [
+                                        Align(alignment: Alignment.bottomCenter,
+                                        child: Container(
+                                          height: 136,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(20),
+                                              bottomRight: Radius.circular(20),
+                                            ),
+                                            gradient: LinearGradient(
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            colors: [
+                                              Colors.transparent,
+                                              Colors.black.withOpacity(0.6),
+                                            ],
+                                          ),
+                                          ),
+                                        ),),
+                                        Align(
+                                          alignment: Alignment.center,
+                                          child: Padding(padding: EdgeInsets.symmetric(
+                                            horizontal: 16,
+                                            vertical: 20,
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  IconButton(
+                                                    icon: Icon(
+                                                      isPropertySaved
+                                                          ? Icons.favorite
+                                                          : Icons.favorite_border,
+                                                      color: isPropertySaved
+                                                          ? Colors.red
+                                                          : Colors.white,
+                                                    ),
+                                                    onPressed: () {
+                                                      savedPropertiesProvider
+                                                          .toggleSavedProperty(listing.id);
+                                                    },
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment: MainAxisAlignment.end,
+                                                    children: [
+                                                      Container(
+                                                        decoration: BoxDecoration(
+                                                          borderRadius: BorderRadius.circular(20),
+                                                          color: Colors.black.withOpacity(0.24),
+                                                        ),
+                                                        padding: EdgeInsets.symmetric(
+                                                          horizontal: 8,
+                                                          vertical: 4
+                                                        ),
+                                                        child: Row(
+                                                          children: [
+                                                            Icon(
+                                                              Icons.location_on_outlined,
+                                                              color: Colors.white,
+                                                            ),
+                                                            SizedBox(
+                                                              width: 4,
+                                                            ),
+                                                            Text('1.6 km',
+                                                              style: GoogleFonts.poppins(
+                                                                textStyle: TextStyle(
+                                                                  fontSize: 12,
+                                                                  color: Colors.white,
+                                                                  fontWeight: FontWeight.normal,
+                                                                ),
+                                                              ),),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                              Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Text( listing.title,
+                                                    style: GoogleFonts.poppins(
+                                                      textStyle: TextStyle(
+                                                        fontSize: 18,
+                                                        color: Colors.white,
+                                                        fontWeight: FontWeight.normal,
+                                                      ),
+                                                    ),),
+                                                  Text( listing.location,
+                                                    style: GoogleFonts.poppins(
+                                                      textStyle: TextStyle(
+                                                        fontSize: 14,
+                                                        color: Colors.white,
+                                                        fontWeight: FontWeight.normal,
+                                                      ),
+                                                    ),),
+                                                ],
+                                              ),
+                                            ],
+                                          ),),
+
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
 
-                                SizedBox(height: 8.0),
-
-                                Text(
-                                  listing.price.toString(),
-                                  style: GoogleFonts.lato(
-                                    textStyle: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
 
                                 // Text(
                                 //   listing.description,
-                                //   style: GoogleFonts.lato(
+                                //   style: GoogleFonts.poppins(
                                 //     textStyle: TextStyle(
                                 //       fontSize: 12,
                                 //       color: Colors.black,
@@ -351,7 +460,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 //     ),
                                 //   ),
                                 // ),
-                                Text(listing.location),
                                 // Add any other desired widgets for each listing
                               ],
                             ),
@@ -363,6 +471,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
+
               Container(
                 padding: EdgeInsets.fromLTRB(20, 5, 20, 20),
                 child: Column(
@@ -373,7 +482,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         Text(
                           'Near you',
-                          style: GoogleFonts.lato(
+                          style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               fontSize: 20,
                               color: Colors.black,
@@ -383,7 +492,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Text(
                           'See more',
-                          style: GoogleFonts.lato(
+                          style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               fontSize: 12,
                               color: Colors.black,
@@ -421,19 +530,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
 
                                 SizedBox(height: 8.0),
-                                Text(
-                                  listing.price.toString(),
-                                  style: GoogleFonts.lato(
-                                    textStyle: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      listing.price.toString(),
+                                      style: GoogleFonts.poppins(
+                                        textStyle: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                    Icon(Icons.save_alt_outlined),
+                                  ],
                                 ),
                                 // Text(
                                 //   listing.description,
-                                //   style: GoogleFonts.lato(
+                                //   style: GoogleFonts.poppins(
                                 //     textStyle: TextStyle(
                                 //       fontSize: 12,
                                 //       color: Colors.black,

@@ -4,7 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readmore/readmore.dart';
 import 'package:zeroagent/size_config.dart';
-import '../../models/properties.dart';
+import '../../models/featured.dart';
 
 class PropertyDetailsPage extends StatefulWidget {
   final RealEstateListing? realEstateListings;
@@ -69,7 +69,7 @@ class _PropertyDetailsPageState extends State<PropertyDetailsPage> {
                           children: [
                             Text(
                               'Mr David Mbonu',
-                              style: GoogleFonts.lato(
+                              style: GoogleFonts.poppins(
                                 textStyle: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -79,7 +79,7 @@ class _PropertyDetailsPageState extends State<PropertyDetailsPage> {
                             SizedBox(height: SizeConfig.blockSizeHorizontal! * 0.5),
                             Text(
                               'Live in Landlord',
-                              style: GoogleFonts.lato(
+                              style: GoogleFonts.poppins(
                                 textStyle: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.normal,
@@ -106,7 +106,7 @@ class _PropertyDetailsPageState extends State<PropertyDetailsPage> {
                       padding: EdgeInsets.symmetric(horizontal: 24),
                       child: Center(
                         child: Text('Chat Now',
-                          style: GoogleFonts.lato(
+                          style: GoogleFonts.poppins(
                             textStyle: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
@@ -134,7 +134,7 @@ class _PropertyDetailsPageState extends State<PropertyDetailsPage> {
           }),
         title: Text(
           widget.realEstateListings!.title,
-          style: GoogleFonts.lato(
+          style: GoogleFonts.poppins(
             textStyle: TextStyle(
               fontSize: 24,
               color: Colors.black,
@@ -185,7 +185,7 @@ class _PropertyDetailsPageState extends State<PropertyDetailsPage> {
 
                 Text(
                   'Description:',
-                  style: GoogleFonts.lato(
+                  style: GoogleFonts.poppins(
                     textStyle: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -212,7 +212,7 @@ class _PropertyDetailsPageState extends State<PropertyDetailsPage> {
                   children: [
                     Text(
                       'Gallery',
-                      style: GoogleFonts.lato(
+                      style: GoogleFonts.poppins(
                         textStyle: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -269,7 +269,7 @@ class _PropertyDetailsPageState extends State<PropertyDetailsPage> {
                   children: [
                     Text(
                       'Location',
-                      style: GoogleFonts.lato(
+                      style: GoogleFonts.poppins(
                         textStyle: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,

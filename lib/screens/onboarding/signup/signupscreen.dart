@@ -5,6 +5,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:zeroagent/screens/onboarding/signup/signupwithemail.dart';
 
 import '../../../components/buttomnavbar.dart';
+import '../../../main.dart';
 import '../../homepage/homescreen.dart';
 
 class SignupScreen extends StatefulWidget {
