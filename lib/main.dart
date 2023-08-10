@@ -30,6 +30,8 @@ void main() {
         ChangeNotifierProvider(create: (_) => PropertyListProvider()),
         ChangeNotifierProvider(create: (context) => SavedPropertiesProvider()),
         Provider<List<RealEstateListing>>(create: (_) => realEstateListings),
+        ChangeNotifierProvider(create: (_) => NearYouListingsProvider()),
+
       ],
       child: MyApp(),
     ),

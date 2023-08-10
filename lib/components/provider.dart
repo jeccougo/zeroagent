@@ -44,3 +44,22 @@ class SavedPropertiesProvider with ChangeNotifier {
   }
 }
 
+
+class NearYouListingsProvider extends ChangeNotifier {
+  final Set<int> _savedProperties = {}; // Store the saved property IDs
+
+  Set<int> get savedProperties => _savedProperties;
+
+  bool isPropertySaved(int propertyId) {
+    return _savedProperties.contains(propertyId);
+  }
+
+  void toggleSavedProperty(int propertyId) {
+    if (_savedProperties.contains(propertyId)) {
+      _savedProperties.remove(propertyId);
+    } else {
+      _savedProperties.add(propertyId);
+    }
+    notifyListeners();
+  }
+}

@@ -5,19 +5,35 @@ import 'package:provider/provider.dart';
 
 import '../../components/provider.dart';
 import '../../models/featured.dart';
+import '../../models/nearyou.dart';
 
 class SavedPropertiesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    // final savedPropertiesProvider =
+    // Provider.of<SavedPropertiesProvider>(context);
+    // final realEstateListings = Provider.of<List<RealEstateListing>>(context);
+    //
+    // final List<RealEstateListing> savedProperties = realEstateListings
+    //     .where((property) =>
+    //     savedPropertiesProvider.savedProperties.contains(property.id))
+    //     .toList();
+
+
     final savedPropertiesProvider =
     Provider.of<SavedPropertiesProvider>(context);
-    final realEstateListings = Provider.of<List<RealEstateListing>>(context);
+    final realEstateListings =
+    Provider.of<List<RealEstateListing>>(context);
+    final nearYouListings = Provider.of<List<NearYouListing>>(context);
 
-    final List<RealEstateListing> savedProperties = realEstateListings
-        .where((property) =>
-        savedPropertiesProvider.savedProperties.contains(property.id))
-        .toList();
+    final List<dynamic> savedProperties = [];
+
+    savedProperties.addAll(realEstateListings.where((property) =>
+        savedPropertiesProvider.savedProperties.contains(property.id)));
+
+    savedProperties.addAll(nearYouListings.where((property) =>
+        savedPropertiesProvider.savedProperties.contains(property.id)));
 
     return Scaffold(
       appBar: AppBar(
